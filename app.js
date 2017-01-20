@@ -3,9 +3,14 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var favicon = require('serve-favicon');
 
 var index = require('./routes/index');
 var app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'handlebars');
 
 // CORS
 app.use(function(req, res, next) {
@@ -37,7 +42,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error.hbs');
 });
 
 module.exports = app;

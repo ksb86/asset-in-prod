@@ -10,17 +10,19 @@ router.get('/', function(req, res, next) {
         if (error) {
             jsonResponse['status'] = 'request failed';
             jsonResponse['path'] = url;
-        }
-        if (response.statusCode !== 200) {
-            jsonResponse['status'] = response.statusCode;
-            jsonResponse['path'] = url;
-            jsonResponse['length'] = '';
-            jsonResponse['md5'] = '';
         } else {
-            jsonResponse['status'] = response.statusCode;
-            jsonResponse['path'] = url;
-            jsonResponse['length'] = (response.headers['content-length'] / 1000) + 'kb';
-            jsonResponse['md5'] = md5(response.body);
+
+            if (response.statusCode !== 200) {
+                jsonResponse['status'] = response.statusCode;
+                jsonResponse['path'] = url;
+                jsonResponse['length'] = '';
+                jsonResponse['md5'] = '';
+            } else {
+                jsonResponse['status'] = response.statusCode;
+                jsonResponse['path'] = url;
+                jsonResponse['length'] = (response.headers['content-length'] / 1000) + 'kb';
+                jsonResponse['md5'] = md5(response.body);
+            }
         }
 
         res.send(jsonResponse);
