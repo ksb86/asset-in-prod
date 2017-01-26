@@ -1,1 +1,1 @@
-Plugin to test wether assets are present inside or outside of the network.
+Plugin to test whether assets are present from outside the network.
