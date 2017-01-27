@@ -12,6 +12,9 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
 
+// static assets
+app.use(express.static(__dirname + '/public'));
+
 // CORS
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
