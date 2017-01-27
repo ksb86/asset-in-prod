@@ -1,4 +1,4 @@
-function() {
+(function() {
     var descriptionText = document.getElementById('descriptionmodule');
     if (descriptionText) {
 
@@ -25,5 +25,4 @@ function() {
             });
         });
     }
-
-}();
+})();
